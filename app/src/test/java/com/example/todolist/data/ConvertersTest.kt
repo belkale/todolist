@@ -25,7 +25,7 @@ class ConvertersTest {
 
     @Test
     fun convertsPriorityToStringAndBack_preservesEnum() {
-        for (priority in Priority.values()) {
+        for (priority in Priority.entries) {
             val str = converters.fromPriority(priority)
             val roundTrip = converters.toPriority(str)
             assertEquals(priority, roundTrip)
@@ -34,7 +34,7 @@ class ConvertersTest {
 
     @Test
     fun fromPriority_returnsUppercaseEnumName() {
-        for (priority in Priority.values()) {
+        for (priority in Priority.entries) {
             val result = converters.fromPriority(priority)
             assertEquals(priority.name, result)
             // Ensure it's uppercase
