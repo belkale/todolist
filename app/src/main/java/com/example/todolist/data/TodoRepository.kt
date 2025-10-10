@@ -26,4 +26,8 @@ class TodoRepository @Inject constructor(
 
     suspend fun updateTodoCompletion(id: Long, isCompleted: Boolean) = 
         todoDao.updateTodoCompletion(id, isCompleted)
+
+    suspend fun clearAllTodos() {
+        todoDao.clearAllTodos()
+    }
 }
