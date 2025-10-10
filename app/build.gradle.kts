@@ -39,6 +39,12 @@ android {
     buildFeatures {
         compose = true
     }
+    packaging {
+        resources {
+            excludes += "META-INF/LICENSE.md"      // The specific fix for your error
+            excludes += "META-INF/LICENSE-notice.md"
+        }
+    }
 }
 
 dependencies {
@@ -77,7 +83,15 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     
     // Testing
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.room.testing) // <-- Important for Room tests
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+
+    testImplementation(libs.mockk)
+    testImplementation(libs.androidx.arch.core.testing)
+    androidTestImplementation(libs.mockk.android)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
