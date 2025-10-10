@@ -26,7 +26,7 @@ class TodoAppIntegrationTest {
     @Inject
     lateinit var repository: TodoRepository
 
-    @Before 
+    @Before
     fun setUp() {
         hiltRule.inject() // Inject dependencies
         runBlocking {
